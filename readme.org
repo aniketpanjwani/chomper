@@ -1,0 +1,38 @@
+* Introduction
+Chomper is a Python command-line program for use on Linux which can either create blacklists of blocked websites or whitelists of allowed websites for specified periods of time. The program is intended to help people with issues being productive on a computer due to Internet distractions.
+* Installation
+Before beginning installation, you should have git installed. Additionally, it would be good to have [[https://github.com/pyenv/pyenv][pyenv]] installed and on your PATH. Finally, when installing Chomper, make sure to use an account which has admin privileges.
+
+1. Clone Chomper into some repository, e.g. ~/chomper, and change directories to the repository.
+2. Execute "make init" into your terminal.
+3. Enter "pipenv shell" into your terminal. Once the new shell starts, enter mitmdump into your terminal. After mitmdump begins for the first time, exit mitmdump (Ctrl-C Ctrl-C).
+4. There should now be various certificate files in ~/.mitmproxy. Import these certificates to your web browser. In Google Chrome, this can be done by going to Settings > Advanced Settings > Manage Certificates. Then, go to Authorities, click Import, and tick all three boxes after selecting your certificate. Finally, go to Your Certificates, click Import, and import your certificate.
+
+You're now ready to use Chomper!
+* Usage
+* Hardcore Mode
+If you use Linux and have administrative privileges, you can always overcome any sort of Internet block.
+* License
+* Known Issues
+1. On certain integrated routers primarily distributed by Comcast, you might have trouble accessing domains using IPv6 (see [[http://forums.xfinity.com/t5/Your-Home-Network/Stunningly-poor-IPv6-tech-support-Modem-in-Bridge-Mode-for/td-p/2895476][this thread]]).
+2. Some whitelisted websites may not function properly if dependencies are not also whitelisted. Two examples:
+   + If you only whitelist Upwork.com, a freelancing platform, you will likely receive a message telling you to stop blocking cookies, and may be locked out of certain actions in your account.
+   + If you fail to whitelist amazonaws.com, you will not see images or videos on many websites which store these resources on AWS S3.
+* Feature Development
+** Short-Term (Within 2 months)
++ Fix known issues.
++ Further automate installation.
++ Write tests to ensure YAML file is properly formatted.
++ Add ability to use wildcards in filtering.
++ Ability to schedule sequential blacklists/whitelists.
+** Medium-Term (Within 6 months)
++ GUI Interface.
++ Support for MacOS.
+** Long-Term (Within 18 months)
++ Compatiblity with VPNs/Tor.
+* Support
+You can ask questions and join the development discussion on the Chomper Gitter channel.
+
+Please post bug reports and feature requests (only) in GitHub issues.
+* Contributors
+Chomper was created and is maintained by Aniket Panjwani. For a full list of contributors, go here.
