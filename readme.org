@@ -10,7 +10,7 @@ Before beginning installation, you should have git installed. Additionally, it w
 
 You're now ready to use Chomper!
 * Usage
-Blacklists and whitelists are configured through YAML files. 
+Chomper is configured through a simple configuration file. The first level defines the names of the rules, and the second level defines whether a rules is a blacklist or whitelist, and the addresses involved in a rule. An example configuration file which I use is found below. 
 #+BEGIN_SRC yaml
   coding:
     - block_type:
@@ -44,6 +44,9 @@ Blacklists and whitelists are configured through YAML files.
     - addresses:
         - abcdxyz.com
 #+END_SRC
+The easiest way to use chomper is through the /chomp/ script in repository's base. /chomp/ takes two arguments - the rule and the block_length. /chomp/ assumes you are using the YAML file in ./data/rules.yaml. With the above YAML file, ~chomp coding 10~ will enact the whitelist for the addresses underneath coding for 10 minutes.
+
+Alternatively, you can use chomper through the command-line interface in ./chomper/block.py.
 * Hardcore Mode
 If you use Linux and have administrative privileges, you can always overcome any sort of Internet block.
 * License
