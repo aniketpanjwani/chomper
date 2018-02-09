@@ -10,6 +10,40 @@ Before beginning installation, you should have git installed. Additionally, it w
 
 You're now ready to use Chomper!
 * Usage
+Blacklists and whitelists are configured through YAML files. 
+#+BEGIN_SRC yaml
+  coding:
+    - block_type:
+        - whitelist
+    - addresses:
+      - github.com/coleifer/peewee
+      - stackoverflow.com
+      - unix.stackexchange.com
+      - aws.amazon.com
+      - upwork.com
+      - doc.peewee-orm.com
+      - pandas.pydata.org
+      - python.org
+      - amazonaws.com
+  nosocial:
+    - block_type:
+        - blacklist
+    - addresses:
+        - facebook.com
+        - instagram.com
+        - twitter.com
+        - snapchat.com
+  allon:
+    - block_type:
+        - blacklist
+    - addresses:
+        - abcxyz.com
+  alloff:
+    - block_type:
+        - whitelist 
+    - addresses:
+        - abcdxyz.com
+#+END_SRC
 * Hardcore Mode
 If you use Linux and have administrative privileges, you can always overcome any sort of Internet block.
 * License
