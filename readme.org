@@ -79,6 +79,6 @@ You can ask questions and join the development discussion on the Chomper Gitter 
 
 Please post bug reports and feature requests (only) in GitHub issues.
 * License
-Chomper is licensed according to the MIT Lic
+Chomper is licensed according to the GPLv3. See the COPYING file for more details.
 * Contributors
 Chomper was created and is maintained by Aniket Panjwani. For a full list of contributors, go here.
