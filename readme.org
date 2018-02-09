@@ -4,7 +4,7 @@ Chomper is a Python command-line program for use on Linux which can either creat
 Before beginning installation, you should have git installed. Additionally, it would be good to have [[https://github.com/pyenv/pyenv][pyenv]] installed and on your PATH. Finally, when installing Chomper, make sure to use an account which has admin privileges.
 
 1. Clone Chomper into some repository, e.g. ~/chomper, and change directories to the repository.
-2. Execute "make init" into your terminal.
+2. Execute ~make init~ into your terminal.
 3. Enter "pipenv shell" into your terminal. Once the new shell starts, enter mitmdump into your terminal. After mitmdump begins for the first time, exit mitmdump (Ctrl-C Ctrl-C).
 4. There should now be various certificate files in ~/.mitmproxy. Import these certificates to your web browser. In Google Chrome, this can be done by going to Settings > Advanced Settings > Manage Certificates. Then, go to Authorities, click Import, and tick all three boxes after selecting your certificate. Finally, go to Your Certificates, click Import, and import your certificate.
 
@@ -44,12 +44,17 @@ Chomper is configured through a simple configuration file. The first level defin
     - addresses:
         - abcdxyz.com
 #+END_SRC
-The easiest way to use chomper is through the /chomp/ script in repository's base. /chomp/ takes two arguments - the rule and the block_length. /chomp/ assumes you are using the YAML file in ./data/rules.yaml. With the above YAML file, ~chomp coding 10~ will enact the whitelist for the addresses underneath coding for 10 minutes.
+The easiest way to use chomper is through the /chomp/ script in repository's base. /chomp/ takes two arguments - the rule and the block_length. /chomp/ assumes you are using the YAML file in ./data/rules.yaml. With the above YAML file, ~chomp coding 10~ will enact the whitelist for the addresses underneath coding for 10 minutes. If you attempt to use chomper again before the 10 minutes are up, you will be prevented from doing so.
 
-Alternatively, you can use chomper through the command-line interface in ./chomper/block.py.
+Alternatively, you can use chomper directly through the command-line interface defined in ./chomper/block.py.
 * Hardcore Mode
-If you use Linux and have administrative privileges, you can always overcome any sort of Internet block.
-* License
+If you use Linux and have root privileges, it is impossible to prevent yourself from breaking any sort of Internet block. If you want to use Chomper seriously, I suggest that after installing Chopmer, you do the following:
+
+1. Create a new account with administrative privileges. Give this account a very long, complicated password. Write down the password, and store it in some secure, but difficult to access location.
+2. While your main account still has root privileges, run ~make lock~ from the base directory and enter your password where prompted.
+3. Remove your administrative privileges, log out, and log back in.
+   
+You will now be able to use Chomper with .
 * Known Issues
 1. On certain integrated routers primarily distributed by Comcast, you might have trouble accessing domains using IPv6 (see [[http://forums.xfinity.com/t5/Your-Home-Network/Stunningly-poor-IPv6-tech-support-Modem-in-Bridge-Mode-for/td-p/2895476][this thread]]).
 2. Some whitelisted websites may not function properly if dependencies are not also whitelisted. Two examples:
@@ -71,5 +76,6 @@ If you use Linux and have administrative privileges, you can always overcome any
 You can ask questions and join the development discussion on the Chomper Gitter channel.
 
 Please post bug reports and feature requests (only) in GitHub issues.
+* License
 * Contributors
 Chomper was created and is maintained by Aniket Panjwani. For a full list of contributors, go here.
