@@ -19,6 +19,9 @@ lock:
 	sudo chown -R root:root ./
 	sudo chown $(CURRENT_USER):$(CURRENT_USER) ./data/rules.yaml
 	sudo chown $(CURRENT_USER):$(CURRENT_USER) ./readme.org
+	sudo chown $(CURRENT_USER):$(CURRENT_USER) ./readme.org
+	sudo chown $(CURRENT_USER):$(CURRENT_USER) ./.gitignore
+	sudo chown -R $(CURRENT_USER):$(CURRENT_USER) ./.git
 
 reset:
 	sudo env PATH=$(PATH) ${INTERPRETER}3.6m ${CURRENT_DIR}/chomper/reset.py
