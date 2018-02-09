@@ -49,6 +49,8 @@ Chomper is configured through a simple configuration file. The first level defin
 The easiest way to use chomper is through the /chomp/ script in repository's base. /chomp/ takes two arguments - the rule and the block_length. /chomp/ assumes you are using the YAML file in ./data/rules.yaml. With the above YAML file, ~chomp coding 10~ will enact the whitelist for the addresses underneath coding for 10 minutes. If you attempt to use chomper again before the 10 minutes are up, you will be prevented from doing so.
 
 Alternatively, you can use chomper directly through the command-line interface defined in ./chomper/block.py.
+
+If you change your mind about the block, and you have sudo privileges, you can reset the block with ~make reset~.
 * Hardcore Mode
 If you use Linux and have root privileges, it is impossible to prevent yourself from breaking any sort of Internet block. If you want to use Chomper seriously, I suggest that after installing Chopmer, you do the following:
 
