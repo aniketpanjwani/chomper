@@ -12,12 +12,12 @@ import yaml
 import click
 from crontab import CronTab
 sys.path.append('../')
-import chomper.utils as utils
-from chomper.constants import TIME_FORMAT, MITMDUMP_COMMAND
+import utils
+from constants import TIME_FORMAT, MITMDUMP_COMMAND
 
 
 @click.command()
-@click.option('--rules_path', default='../data/rules.yaml',
+@click.option('--rules_path', default='./data/rules.yaml',
               help='Path of rules file.')
 @click.option('--settings_json_path', help='Path of time file.',
               default='../data/block_settings.json')
