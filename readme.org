@@ -76,7 +76,7 @@ You will now be able to use Chomper through /chomp/ as described above, but you 
 ** Long-Term (Within 18 months)
 + Compatiblity with VPNs/Tor.
 * Support
-You can ask questions and join the development discussion on the Chomper Gitter channel.
+You can ask questions and join the development discussion on the [[https://gitter.im/chomperapp/Lobby][Chomper Gitter channel]].
 
 Please post bug reports and feature requests (only) in GitHub issues.
 * License
