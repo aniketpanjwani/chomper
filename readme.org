@@ -1,5 +1,5 @@
 * Introduction
-Chomper is a Python command-line program for use on Linux which can either create blacklists of blocked websites or whitelists of allowed websites for specified periods of time. The program is intended to help people with issues being productive on a computer due to Internet distractions. You can read more about the motivation/philosophy behind Chomper [[https:https://addictedto.tech/projects/chomper/][here]].
+Chomper is a Python command-line program for use on Linux which can either create blacklists of blocked websites or whitelists of allowed websites for specified periods of time. The program is intended to help people with issues being productive on a computer due to Internet distractions. You can read more about the motivation/philosophy behind Chomper [[https:https://addictedto.tech/chomper/][here]].
 * Installation
 Before beginning installation, you should have git and [[https://www.gnu.org/software/screen/manual/screen.html][screen]] installed. Additionally, it would be good to have [[https://github.com/pyenv/pyenv][pyenv]] installed and on your PATH. Finally, when installing Chomper, make sure to use an account which has admin privileges.
 
