@@ -58,6 +58,8 @@ If you use Linux and have root privileges, it is impossible to prevent yourself 
 3. Remove your administrative privileges, log out, and log back in.
    
 You will now be able to use Chomper through /chomp/ as described above, but you will not be able to edit the code, or kill any processes started by Chomper to block websites.
+
+If you want to keep a back-door which allows you to have delayed access to root privileges, I suggest the nifty [[https://github.com/miheerdew/delayed-admin][delayed-admin tool]].
 * Known Issues
 1. On certain integrated routers primarily distributed by Comcast, you might have trouble accessing domains using IPv6 (see [[http://forums.xfinity.com/t5/Your-Home-Network/Stunningly-poor-IPv6-tech-support-Modem-in-Bridge-Mode-for/td-p/2895476][this thread]]).
 2. Some whitelisted websites may not function properly if dependencies are not also whitelisted. Two examples:
