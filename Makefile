@@ -15,7 +15,7 @@ init:
 	pipenv install --dev # Install packages
 
 lock:
-	echo $(SUDOERS_ENTRY)* | sudo EDITOR='tee -a' visudo -f $(SUDOERS_FILE)
+	echo $(SUDOERS_ENTRY) | sudo EDITOR='tee -a' visudo -f $(SUDOERS_FILE)
 	sudo chown -R root:root ./
 	sudo chown $(CURRENT_USER):$(CURRENT_USER) ./data/rules.yaml
 	sudo chown $(CURRENT_USER):$(CURRENT_USER) ./readme.org
