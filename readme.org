@@ -61,8 +61,7 @@ You will now be able to use Chomper through /chomp/ as described above, but you 
 
 If you want to keep a back-door which allows you to have delayed access to root privileges, I suggest the nifty [[https://github.com/miheerdew/delayed-admin][delayed-admin tool]].
 * Known Issues
-1. For some reason, ipv6 sites will not work when using Chomper on some networks, but they will work when using Chomper on other networks. I have a theory that this is a Comcast/Xfinity-related issue, but I'm not completely sure.
-2. Some whitelisted websites may not function properly if dependencies are not also whitelisted. Two examples:
+1. Some whitelisted websites may not function properly if dependencies are not also whitelisted. Two examples:
    + If you only whitelist Upwork.com, a freelancing platform, you will likely receive a message telling you to stop blocking cookies, and may be locked out of certain actions in your account.
    + If you fail to whitelist amazonaws.com, you will not see images or videos on many websites which store these resources on AWS S3.
 * Feature Development
