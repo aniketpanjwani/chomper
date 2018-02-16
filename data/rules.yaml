@@ -11,6 +11,8 @@ coding:
     - pandas.pydata.org
     - python.org
     - amazonaws.com
+    - amazon.com/ap/signin
+    - cloudfront.net
 email:
   - block_type:
       - whitelist
