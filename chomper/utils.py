@@ -50,6 +50,6 @@ def find_processes_by_name(name):
 
 
 def kill_process():
-    processes = find_processes_by_name('mitmdump')
+    processes = find_processes_by_name('mitmdump') + find_processes_by_name('mitmproxy')
     for p in processes:
         p.kill()
