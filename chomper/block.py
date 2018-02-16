@@ -28,8 +28,11 @@ from constants import TIME_FORMAT, MITMDUMP_COMMAND
 @click.option('--reset_command', type=str,
               help='Full path command to reset ports.',
               default='python reset.py')
+@click.option('--mitmdump_bin_path', type=str,
+              help='Full path command to mitmdump_binary.')
 def main(rules_path: str, settings_json_path: str, rule: str,
-         listening_port: int, block_length: int, reset_command: str):
+         listening_port: int, block_length: int, reset_command: str,
+         mitmdump_bin_path: str):
 
     # TODO: Check if user is root; else raise Exception.
 
@@ -45,7 +48,8 @@ def main(rules_path: str, settings_json_path: str, rule: str,
         if old_block_end > new_block_start:
             enact_block(old_block_settings['listening_port'],
                         old_block_settings['addresses'],
-                        old_block_settings['block_type'])
+                        old_block_settings['block_type'],
+                        mitmdump_bin_path)
             set_block_length(old_block_end, reset_command)
             write_block_to_json(old_block_settings, settings_json_path)
             print("Did not enact new block. Old block still in effect until {}."
@@ -56,7 +60,8 @@ def main(rules_path: str, settings_json_path: str, rule: str,
                 = create_block_dict(rules_path, listening_port, rule,
                                     new_block_start, new_block_end)
             enact_block(listening_port, new_block_settings['addresses'],
-                        new_block_settings['block_type'])
+                        new_block_settings['block_type'],
+                        mitmdump_bin_path)
             set_block_length(new_block_end, reset_command)
             write_block_to_json(new_block_settings, settings_json_path)
             print("New block in effect until {}."\
@@ -67,7 +72,8 @@ def main(rules_path: str, settings_json_path: str, rule: str,
             = create_block_dict(rules_path, listening_port, rule,
                                 new_block_start, new_block_end)
         enact_block(listening_port, new_block_settings['addresses'],
-                    new_block_settings['block_type'])
+                    new_block_settings['block_type'],
+                    mitmdump_bin_path)
         set_block_length(new_block_end, reset_command)
         write_block_to_json(new_block_settings, settings_json_path)
         print("New block in effect until {}."\
@@ -110,7 +116,8 @@ def create_block_dict(rules_path, listening_port, rule, block_start, block_end):
                   'addresses': joined_urls}
     return block_dict
 
-def enact_block(listening_port: int, joined_addresses: str, block_type: str):
+def enact_block(listening_port: int, joined_addresses: str, block_type: str,
+                mitmdump_bin_path: str):
     """Function which enacts block."""
 
     # Flush any existing processes and reset networking.
@@ -125,7 +132,8 @@ def enact_block(listening_port: int, joined_addresses: str, block_type: str):
     utils.setup_nat(listening_port)
 
     # Start mitmdump, passing filter.py.
-    args = shlex.split(MITMDUMP_COMMAND.format(joined_addresses,
+    args = shlex.split(MITMDUMP_COMMAND.format(mitmdump_bin_path,
+                                               joined_addresses,
                                                block_type))
     mitmdump = subprocess.Popen(args)
 
