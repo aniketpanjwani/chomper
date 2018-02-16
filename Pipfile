@@ -9,7 +9,7 @@ name = "pypi"
 
 click = "*"
 pyyaml = "*"
-mitmproxy = {git = "https://github.com:/mitmproxy/mitmproxy.git", editable = true, ref = "6d8731e144eaec2aaf2120c21969c9228b7af95a"}
+mitmproxy = {git = "https://github.com/mitmproxy/mitmproxy.git", editable = true}
 psutil = "*"
 python-crontab = "*"
 

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "81379c5d60ce19b20c91929cfd281ce97d0e6ec65c0b6f7d59931b1871f3d5fb"
+            "sha256": "bdcf87edeb14bfaa6e1128cd7b5b4879be0defbf9821f226d6203551aa69728f"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -195,9 +195,9 @@
         },
         "kaitaistruct": {
             "hashes": [
-                "sha256:319caca6dd7051655b48457be4a06a236ce782606c347f1c226d6190abd543a6"
+                "sha256:d1d17c7f6839b3d28fc22b21295f787974786c2201e8788975e72e2a1d109ff5"
             ],
-            "version": "==0.7"
+            "version": "==0.8"
         },
         "ldap3": {
             "hashes": [
@@ -212,8 +212,8 @@
         },
         "mitmproxy": {
             "editable": true,
-            "git": "https://github.com:/mitmproxy/mitmproxy.git",
-            "ref": "6d8731e144eaec2aaf2120c21969c9228b7af95a"
+            "git": "https://github.com/mitmproxy/mitmproxy.git",
+            "ref": "04c3079aa285bf57f1e5b59a16bf42bae1957e86"
         },
         "passlib": {
             "hashes": [
@@ -407,11 +407,11 @@
         },
         "isort": {
             "hashes": [
-                "sha256:75e94757591197eb0afeb1f3b54f6517c1a26fecaeab2b373885739f63de3e66",
-                "sha256:77502c541ad5c40a158932498bf6177bb663d8a2662b50f02a59b906419ba699",
-                "sha256:34929af733faadf884da29d83e7df1884363b3cc647a48e000b3c5cc13d17549"
+                "sha256:ec9ef8f4a9bc6f71eec99e1806bfa2de401650d996c59330782b89a5555c1497",
+                "sha256:1153601da39a25b14ddc54955dbbacbb6b2d19135386699e2ad58517953b34af",
+                "sha256:b9c40e9750f3d77e6e4d441d8b0266cf555e7cdabdcff33c4fd06366ca761ef8"
             ],
-            "version": "==4.3.3"
+            "version": "==4.3.4"
         },
         "lazy-object-proxy": {
             "hashes": [
