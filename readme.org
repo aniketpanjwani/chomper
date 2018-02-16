@@ -6,7 +6,10 @@ Before beginning installation, you should have git and [[https://www.gnu.org/sof
 1. Clone Chomper into some repository, e.g. ~/chomper, and change directories to the repository.
 2. Execute ~make init~ into your terminal.
 3. Enter ~pipenv shell~ into your terminal. Once the new shell starts, enter mitmdump into your terminal. After mitmdump begins for the first time, exit mitmdump (Ctrl-C Ctrl-C).
-4. There should now be various certificate files in ~/.mitmproxy. Import these certificates to your web browser. In Google Chrome, this can be done by going to Settings > Advanced Settings > Manage Certificates. Then, go to Authorities and click Import. Select mitmproxy-ca-cert.pem, and tick all three boxes after selecting your certificate. Finally, go to Your Certificates, click Import, and import mitmproxy-ca-cert.crt.
+4. There should now be various certificate files in ~/.mitmproxy which have been generated after you ran mitmdump for the first time. Now, we have to import these certificates to your web browser. In Google Chrome, this can be done as follows:
+  + Go to Settings > Advanced Settings > Manage Certificates. Then, go to Authorities and click Import. Select mitmproxy-ca-cert.pem, and tick all three boxes after selecting your certificate.
+  + Open a terminal, change directories to \~/.mitmproxy, and enter the command ~openssl x509 -in mitmproxy-ca-cert.pem -inform PEM -out mitmproxy-ca-cert.crt~.
+  + Back in "Manage Certificates", go to Your Certificates, click Import, and import the newly-generated mitmproxy-ca-cert.crt.
 5. Open /etc/sysctl.d/99-sysctl.conf as root in your favorite text editor. Uncomment the entries ~net.ipv4.ip_forward=1~ and ~net.ipv6.conf.all_forwarding=1~. Save and exit the text editor. Execute ~sudo sysctl -p~ in the terminal.
 
 You're now ready to use Chomper!
