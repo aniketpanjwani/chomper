@@ -21,7 +21,7 @@ def request(flow):
                    for address in addresses):
             flow.response = http.HTTPResponse.make(
                 200,  # (optional) status code
-                b"Website has been blocked by Chomper!",  # (optional) content
+                b"<h1>Website has been blocked by Chomper!</h1>",  # (optional) content
                 {"Content-Type": "text/html"}  # (optional) headers
             )
         else:
@@ -30,7 +30,7 @@ def request(flow):
         if any(address in flow.request.pretty_url for address in addresses):
             flow.response = http.HTTPResponse.make(
                 200,  # (optional) status code
-                b"Website has been blocked by Chomper!",  # (optional) content
+                b"<h1>Website has been blocked by Chomper!</h1>",  # (optional) content
                 {"Content-Type": "text/html"}  # (optional) headers
             )
         else:
