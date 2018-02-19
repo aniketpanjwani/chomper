@@ -7,6 +7,8 @@ Chomper is a Python command-line program for use on Linux which can either creat
 Most internet blocking programs operate just by modifying [[https://en.wikipedia.org/wiki/Hosts_(file)][the hosts file]]. This approach only allows for creating blacklists. Additionally, the hosts file approach does not allow you to block particular URLs - it only allows you to block particular domains.
 
 Chomper instead filters outgoing requests through a transparent proxy, which allows for filtering requests at the URL level. This means you can make nuanced blacklists and whitelists, so that you can block websites without sacrificing your ability to do work.
+
+You can read more about my motivation for developing Chomper [[https://addictedto.tech/chomper/][here]].
 * Installation
 Before beginning installation, you should have git and [[https://www.gnu.org/software/screen/manual/screen.html][screen]] installed. Additionally, it would be good to have [[https://github.com/pyenv/pyenv][pyenv]] installed and on your PATH. Finally, when installing Chomper, make sure to use an account which has admin privileges.
 
@@ -54,7 +56,7 @@ Chomper is configured through a simple YAML file. The first level defines the na
     - addresses:
         - abcdxyz.com
 #+END_SRC
-The easiest way to use Chomper is through the /chomper/ shell script in the ~bin~ directory . /chomper/ takes two arguments - the rule and the block_length. /chomper/ assumes you are using the YAML file in ./data/rules.yaml. With the above YAML file, ~./chomper coding 10~ will enact the whitelist for the addresses underneath coding for 10 minutes. If you attempt to use chomper again before the 10 minutes are up, you will be prevented from doing so. The allon/alloff rules are temporary hacks to either allow or blacklist all sites.
+The easiest way to use Chomper is through the /chomper/ shell script in the ~bin~ directory. /chomper/ takes two arguments - the rule and the block_length. /chomper/ assumes you are using the YAML file in ./data/rules.yaml. With the above YAML file, ~./chomper coding 10~ will enact the whitelist for the addresses underneath coding for 10 minutes. If you attempt to use chomper again before the 10 minutes are up, you will be prevented from doing so. The allon/alloff rules are temporary hacks to either allow or blacklist all sites.
 
 Alternatively, you can use chomper directly through the command-line interface defined in ./chomper/block.py. This is the best entry point for anyone who wants to create their own scripts.
 
