@@ -75,18 +75,6 @@ If you want to keep a back-door which allows you to have delayed access to root 
 1. Some whitelisted websites may not function properly if dependencies are not also whitelisted. Two examples:
    + If you only whitelist Upwork.com, a freelancing platform, you will likely receive a message telling you to stop blocking cookies, and may be locked out of certain actions in your account.
    + If you fail to whitelist amazonaws.com, you will not see images or videos on many websites which store these resources on AWS S3.
-* Feature Development
-** Short-Term (Within 2 months)
-+ Fix known issues.
-+ Further automate installation.
-+ Write tests to ensure YAML file is properly formatted.
-+ Add ability to use wildcards in filtering.
-+ Ability to schedule sequential blacklists/whitelists.
-** Medium-Term (Within 6 months)
-+ GUI Interface.
-+ Support for MacOS.
-** Long-Term (Within 18 months)
-+ Compatiblity with VPNs/Tor.
 * Support
 You can ask questions and join the development discussion on the [[https://gitter.im/chomperapp/Lobby][Chomper Gitter channel]].
 
@@ -96,4 +84,4 @@ Chomper is licensed according to the GPLv3. See the COPYING file for more detail
 * Contributing
 Interested in contributing? Awesome! Please read the [[./CONTRIBUTING.org][CONTRIBUTING.org file]].
 * About
-Chomper was created and is maintained by Aniket Panjwani. For a full list of contributors, go here.
+Chomper was created and is maintained by Aniket Panjwani. For a full list of contributors, go [[https://github.com/aniketpanjwani/chomper/graphs/contributors][here]].
