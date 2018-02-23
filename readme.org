@@ -71,10 +71,6 @@ If you use Linux and have root privileges, it is impossible to prevent yourself 
 You will now be able to use Chomper through /chomp/ as described above, but you will not be able to edit the code, or kill any processes started by Chomper to block websites.
 
 If you want to keep a back-door which allows you to have delayed access to root privileges, I suggest the nifty [[https://github.com/miheerdew/delayed-admin][delayed-admin tool]].
-* Known Issues
-1. Some whitelisted websites may not function properly if dependencies are not also whitelisted. Two examples:
-   + If you only whitelist Upwork.com, a freelancing platform, you will likely receive a message telling you to stop blocking cookies, and may be locked out of certain actions in your account.
-   + If you fail to whitelist amazonaws.com, you will not see images or videos on many websites which store these resources on AWS S3.
 * Support
 You can ask questions and join the development discussion on the [[https://gitter.im/chomperapp/Lobby][Chomper Gitter channel]].
 
