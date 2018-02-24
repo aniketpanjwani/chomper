@@ -38,7 +38,8 @@ def main(rules_path: str, settings_json_path: str, rule: str,
 
     # Check if previous block's config file exists.
     new_block_start = datetime.datetime.now()
-    new_block_end = new_block_start + datetime.timedelta(minutes=block_length)
+    new_block_end = new_block_start.replace(second=0) \
+        + datetime.timedelta(minutes=block_length)
     if os.path.isfile(settings_json_path):
         with open(settings_json_path, 'r') as json_file:
             old_block_settings = json.load(json_file)
@@ -52,7 +53,8 @@ def main(rules_path: str, settings_json_path: str, rule: str,
                         mitmdump_bin_path)
             set_block_length(old_block_end, reset_command)
             write_block_to_json(old_block_settings, settings_json_path)
-            print("Did not enact new block. Old block still in effect until {}."
+            print("Did not enact new block."
+                  " Old block still in effect until {}."
                   .format(old_block_settings['end']))
         # Old block has passed.
         else:
@@ -64,7 +66,7 @@ def main(rules_path: str, settings_json_path: str, rule: str,
                         mitmdump_bin_path)
             set_block_length(new_block_end, reset_command)
             write_block_to_json(new_block_settings, settings_json_path)
-            print("New block in effect until {}."\
+            print("New block in effect until {}."
                   .format(new_block_settings['end']))
     # No previous config file.
     elif not os.path.isfile(settings_json_path):
@@ -76,7 +78,7 @@ def main(rules_path: str, settings_json_path: str, rule: str,
                     mitmdump_bin_path)
         set_block_length(new_block_end, reset_command)
         write_block_to_json(new_block_settings, settings_json_path)
-        print("New block in effect until {}."\
+        print("New block in effect until {}."
               .format(new_block_settings['end']))
 
 
