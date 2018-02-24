@@ -38,7 +38,8 @@ def main(rules_path: str, settings_json_path: str, rule: str,
 
     # Check if previous block's config file exists.
     new_block_start = datetime.datetime.now()
-    new_block_end = new_block_start + datetime.timedelta(minutes=block_length)
+    new_block_end = new_block_start.replace(second=0) \
+        + datetime.timedelta(minutes=block_length)
     if os.path.isfile(settings_json_path):
         with open(settings_json_path, 'r') as json_file:
             old_block_settings = json.load(json_file)
