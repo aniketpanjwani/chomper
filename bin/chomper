@@ -1,9 +1,11 @@
 # Copyright: (c) 2018, Aniket Panjwani <aniket@addictedto.tech>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 #!/bin/bash
-INTERPRETER=$(pipenv --py)
-MITMDUMP_BIN_PATH=$(pipenv --venv)/bin/mitmdump
+SCRIPT=$(readlink -f "$0")
+CURRENTDIR=$(dirname "$SCRIPT")
+PROJECTDIR=$(dirname "$CURRENTDIR")
+cd $PROJECTDIR && INTERPRETER=$(pipenv --py)
+cd $PROJECTDIR && MITMDUMP_BIN_PATH=$(pipenv --venv)/bin/mitmdump
 CURRENT_USER=$(whoami)
 
-cd .. && CURRENT_DIR=$(pwd)
-sudo ${INTERPRETER} ${CURRENT_DIR}/chomper/block.py --rule=$1 --block_length=$2 --settings_json_path=${CURRENT_DIR}/data/block_settings.json --reset_command "env PATH=${PATH} ${INTERPRETER} ${CURRENT_DIR}/chomper/reset.py" --mitmdump_bin_path=${MITMDUMP_BIN_PATH}
+sudo ${INTERPRETER} ${PROJECTDIR}/chomper/block.py --rule=$1 --block_length=$2 --settings_json_path=${PROJECTDIR}/data/block_settings.json --reset_command "env PATH=${PATH} ${INTERPRETER} ${PROJECTDIR}/chomper/reset.py" --mitmdump_bin_path=${MITMDUMP_BIN_PATH}
