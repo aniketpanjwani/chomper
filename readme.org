@@ -10,15 +10,11 @@ Chomper instead filters outgoing requests through a transparent proxy, which all
 
 You can read more about my motivation for developing Chomper [[https://addictedto.tech/chomper/][here]].
 * Installation
-Before beginning installation, you should have git and [[https://www.gnu.org/software/screen/manual/screen.html][screen]] installed. Additionally, it would be good to have [[https://github.com/pyenv/pyenv][pyenv]] installed and on your PATH. Finally, when installing Chomper, make sure to use an account which has admin privileges.
+Before beginning installation, you should have git and [[https://www.gnu.org/software/screen/manual/screen.html][screen]] installed. Additionally, it would be good to have [[https://github.com/pyenv/pyenv][pyenv]] installed and on your PATH. Finally, when installing Chomper, you need to use an account which has admin privileges.
 
 1. Clone Chomper into some repository, e.g. ~/chomper, and change directories to the repository.
 2. Execute ~make init~ into your terminal.
-3. Enter ~pipenv shell~ into your terminal. Once the new shell starts, enter mitmdump into your terminal. After mitmdump begins for the first time, exit mitmdump (Ctrl-C Ctrl-C).
-4. There should now be various certificate files in ~/.mitmproxy which have been generated after you ran mitmdump for the first time. Now, we have to import these certificates to your web browser.
-  + Google Chrome: Go to Settings > Advanced Settings > Manage Certificates > Authorities. Click import, select mitmproxy-ca.pem, tick all three boxes, and click OK.
-  + Firefox: Go Preferences > Privacy and Security > Certificates > View Certificates > Authorities. Click import, select mitmproxy-ca.pem, tick all three boxes, and click OK.
-5. Open /etc/sysctl.d/99-sysctl.conf as root in your favorite text editor. Uncomment the entries ~net.ipv4.ip_forward=1~ and ~net.ipv6.conf.all_forwarding=1~. Save and exit the text editor. Execute ~sudo sysctl -p~ in the terminal.
+   + When prompted, enter your password.
 
 You're now ready to use Chomper!
 * Usage
