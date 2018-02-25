@@ -13,6 +13,7 @@ SUDOERS_ENTRY:=$(CURRENT_USER)$(SUDOERS_ENTRY_MIDDLE)$(INTERPRETER) $(CURRENT_DI
 init:
 	pip install pipenv # Install pipenv
 	pipenv install --dev # Install packages
+	pipenv run mitmdump & sleep 2 && kill -9 $$!
 
 lock:
 	echo $(SUDOERS_ENTRY) | sudo EDITOR='tee' visudo -f $(SUDOERS_FILE)
