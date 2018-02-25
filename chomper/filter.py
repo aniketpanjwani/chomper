@@ -5,33 +5,38 @@
 
 from mitmproxy import http, ctx
 
+HTML_MESSAGE = "<h1>Website blocked by Chomper! "\
+               "The {} rule is in effect until {}.</h1>"
+
 
 def load(l):
     ctx.log.info("Registering arguments.")
-    # ctx.options.allow_remote = True
     l.add_option("addresses_str", str, '', 'Concatenated addresses.')
-    l.add_option("rule_type", str, '', 'Whitelist or blacklist.')
-
+    l.add_option("block_type", str, '', 'Whitelist or blacklist.')
+    l.add_option("rule_name", str, '', 'Name of block rule.')
+    l.add_option("block_end_time", str, '', 'Time at which block will end.')
 
 def request(flow):
     addresses = ctx.options.addresses_str.split('$[]')
 
-    if ctx.options.rule_type == 'whitelist':
+    if ctx.options.block_type == 'whitelist':
         if not any(address in flow.request.pretty_url
                    for address in addresses):
             flow.response = http.HTTPResponse.make(
-                200,  # (optional) status code
-                b"<h1>Website has been blocked by Chomper!</h1>",  # (optional) content
-                {"Content-Type": "text/html"}  # (optional) headers
+                200,
+                HTML_MESSAGE.format(ctx.options.rule_name,
+                                    ctx.options.block_end_time).encode(),
+                {"Content-Type": "text/html"}
             )
         else:
             pass
-    elif ctx.options.rule_type == 'blacklist':
+    elif ctx.options.block_type == 'blacklist':
         if any(address in flow.request.pretty_url for address in addresses):
             flow.response = http.HTTPResponse.make(
-                200,  # (optional) status code
-                b"<h1>Website has been blocked by Chomper!</h1>",  # (optional) content
-                {"Content-Type": "text/html"}  # (optional) headers
+                200,
+                HTML_MESSAGE.format(ctx.options.rule_name,
+                                    ctx.options.block_end_time).encode(),
+                {"Content-Type": "text/html"}
             )
         else:
             pass
