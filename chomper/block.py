@@ -50,7 +50,7 @@ def main(rules_path: str, settings_json_path: str, rule: str,
             enact_block(old_block_settings['listening_port'],
                         old_block_settings['addresses'],
                         old_block_settings['block_type'],
-                        mitmdump_bin_path)
+                        mitmdump_bin_path, rule, old_block_settings['end'])
             set_block_length(old_block_end, reset_command)
             write_block_to_json(old_block_settings, settings_json_path)
             print("Did not enact new block."
@@ -63,7 +63,7 @@ def main(rules_path: str, settings_json_path: str, rule: str,
                                     new_block_start, new_block_end)
             enact_block(listening_port, new_block_settings['addresses'],
                         new_block_settings['block_type'],
-                        mitmdump_bin_path)
+                        mitmdump_bin_path, rule, new_block_settings['end'])
             set_block_length(new_block_end, reset_command)
             write_block_to_json(new_block_settings, settings_json_path)
             print("New block in effect until {}."
@@ -119,7 +119,7 @@ def create_block_dict(rules_path, listening_port, rule, block_start, block_end):
     return block_dict
 
 def enact_block(listening_port: int, joined_addresses: str, block_type: str,
-                mitmdump_bin_path: str):
+                mitmdump_bin_path: str, rule: str, block_end_time: str):
     """Function which enacts block."""
 
     # Flush any existing processes and reset networking.
@@ -136,7 +136,8 @@ def enact_block(listening_port: int, joined_addresses: str, block_type: str,
     # Start mitmdump, passing filter.py.
     args = shlex.split(MITMDUMP_COMMAND.format(mitmdump_bin_path,
                                                joined_addresses,
-                                               block_type))
+                                               block_type, rule,
+                                               block_end_time))
     mitmdump = subprocess.Popen(args)
 
 if __name__ == "__main__":
