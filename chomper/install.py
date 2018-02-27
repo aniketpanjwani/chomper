@@ -11,7 +11,7 @@ import click
 from utils import exec_command, kill_process
 
 CERT_LOC = {'debian': '/usr/local/share/ca-certificates/mitmproxy-ca.crt',
-            'arch': '/usr/local/share/ca-certificates/mitmproxy-ca.crt'}
+            'antergos': '/etc/ca-certificates/trust-source/anchors/mitmproxy-ca.crt'}
 
 @click.command()
 @click.option('--user')
@@ -29,8 +29,8 @@ def install_linux(user):
     dist = distro.id()
     if dist in {'ubuntu', 'debian', 'linuxmint'}:
         install_debian(user)
-    elif dist == 'arch':
-        install_arch(user)
+    elif dist == 'antergos':
+        install_antergos(user)
     else:
         print("Installation with your Linux distribution "
               "is currently not supported.")
@@ -52,7 +52,7 @@ def install_debian(user):
     print("Installation completed.")
 
 
-def install_arch(user):
+def install_antergos(user):
     exec_command('pipenv run screen -d -m mitmdump')
     time.sleep(2)
     kill_process()
@@ -62,8 +62,8 @@ def install_arch(user):
                  .format(user, CERT_LOC['arch']))
     exec_command('sudo trust extract-compat')
     exec_command('sudo sh ./chomper/certs.sh {}'.format(CERT_LOC['arch']))
-    exec_command('sudo sysctl -w net.ipv4.ip_forward=1')
-    exec_command('sudo sysctl -w net.ipv6.conf.all.forwarding=1')
+    exec_command('sudo echo 1 > /proc/sys/net/ipv4/ip_forward')
+    exec_command('sudo echo 1 > /proc/sys/net/ipv6/conf/all/forwarding')
     exec_command('sudo sysctl -p')
     print("Installation completed.")
 
