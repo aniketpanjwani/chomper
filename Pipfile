@@ -12,6 +12,7 @@ pyyaml = "*"
 mitmproxy = {git = "https://github.com/mitmproxy/mitmproxy.git", editable = true}
 psutil = "*"
 python-crontab = "*"
+distro = "*"
 
 
 [dev-packages]
