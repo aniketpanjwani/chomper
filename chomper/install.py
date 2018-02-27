@@ -45,10 +45,21 @@ def install_debian(user):
     exec_command('sudo sysctl -w net.ipv4.ip_forward=1')
     exec_command('sudo sysctl -w net.ipv6.conf.all.forwarding=1')
     exec_command('sudo sysctl -p')
+    print("Installation completed.")
 
 
 def install_arch(user):
-    pass
+    exec_command('pipenv run screen -d -m mitmdump')
+    time.sleep(2)
+    kill_process()
+    exec_command('openssl x509 -outform der -in ~/.mitmproxy/mitmproxy-ca.pem -out ~/.mitmproxy/mitmproxy-ca.crt')
+    exec_command('sudo cp /home/{}/.mitmproxy/mitmproxy-ca.crt /etc/ca-certificates/trust-source/mitmproxy-ca.crt'.format(user))
+    exec_command('sudo trust extract-compat')
+    exec_command('sudo sh ./chomper/certs.sh')
+    exec_command('sudo sysctl -w net.ipv4.ip_forward=1')
+    exec_command('sudo sysctl -w net.ipv6.conf.all.forwarding=1')
+    exec_command('sudo sysctl -p')
+    print("Installation completed.")
 
 
 def install_mac(user):
