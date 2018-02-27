@@ -75,7 +75,7 @@ def main(rules_path: str, settings_json_path: str, rule: str,
                                 new_block_start, new_block_end)
         enact_block(listening_port, new_block_settings['addresses'],
                     new_block_settings['block_type'],
-                    mitmdump_bin_path)
+                    mitmdump_bin_path, rule, new_block_settings['end'])
         set_block_length(new_block_end, reset_command)
         write_block_to_json(new_block_settings, settings_json_path)
         print("New block in effect until {}."
