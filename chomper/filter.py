@@ -19,24 +19,13 @@ def load(l):
 def request(flow):
     addresses = ctx.options.addresses_str.split('$[]')
 
-    if ctx.options.block_type == 'whitelist':
-        if not any(address in flow.request.pretty_url
-                   for address in addresses):
-            flow.response = http.HTTPResponse.make(
-                200,
-                HTML_MESSAGE.format(ctx.options.rule_name,
-                                    ctx.options.block_end_time).encode(),
-                {"Content-Type": "text/html"}
-            )
-        else:
-            pass
-    elif ctx.options.block_type == 'blacklist':
-        if any(address in flow.request.pretty_url for address in addresses):
-            flow.response = http.HTTPResponse.make(
-                200,
-                HTML_MESSAGE.format(ctx.options.rule_name,
-                                    ctx.options.block_end_time).encode(),
-                {"Content-Type": "text/html"}
-            )
-        else:
-            pass
+    has_match = any(address in flow.request.pretty_url for address in addresses)
+    if ctx.options.block_type == 'whitelist' and not has_match \
+       or ctx.options.block_type == 'blacklist' and has_match:
+
+        flow.response = http.HTTPResponse.make(
+            200,
+            HTML_MESSAGE.format(ctx.options.rule_name,
+                                ctx.options.block_end_time).encode(),
+            {"Content-Type": "text/html"}
+        )
