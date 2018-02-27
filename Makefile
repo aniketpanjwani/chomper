@@ -11,16 +11,9 @@ SUDOERS_ENTRY_SUFFIX:="/chomper/block.py *"
 SUDOERS_ENTRY:=$(CURRENT_USER)$(SUDOERS_ENTRY_MIDDLE)$(INTERPRETER) $(CURRENT_DIR)$(SUDOERS_ENTRY_SUFFIX)
 
 init:
-	pip install pipenv # Install pipenv
+	pip install --user pipenv # Install pipenv
 	pipenv install --dev # Install packages
-	pipenv run mitmdump & sleep 2 && kill -9 $$! # Generate certificates
-	openssl x509 -outform der -in ~/.mitmproxy/mitmproxy-ca.pem -out ~/.mitmproxy/mitmproxy-ca.crt
-	sudo cp /home/$(CURRENT_USER)/.mitmproxy/mitmproxy-ca.crt /usr/local/share/ca-certificates/mitmproxy-ca.crt # Install root certificates
-	sudo update-ca-certificates
-	sudo sh ./chomper/certs.sh # Make browsers recognize root certificates
-	sudo sysctl -w net.ipv4.ip_forward=1 # Enable ipv4 forwarding
-	sudo sysctl -w net.ipv6.conf.all.forwarding=1 # Enable ipv6 forwarding
-	sudo sysctl -p # Lock in new ip forwarding settings.
+	pipenv run python ./chomper/install.py --user=$(CURRENT_USER)
 
 lock:
 	echo $(SUDOERS_ENTRY) | sudo EDITOR='tee' visudo -f $(SUDOERS_FILE)
