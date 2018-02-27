@@ -13,7 +13,7 @@ import click
 from crontab import CronTab
 sys.path.append('../')
 import utils
-from . import TIME_FORMAT, MITMDUMP_COMMAND
+from constants import TIME_FORMAT, MITMDUMP_COMMAND
 
 
 @click.command()
