@@ -15,21 +15,13 @@
 
 
 ###
-### CA file to install
-###
-
-certfile="/usr/local/share/ca-certificates/mitmproxy-ca.crt"
-certname="Chomper"
-
-
-###
 ### For cert8 (legacy - DBM)
 ###
 
 for certDB in $(find ~/ -name "cert8.db")
 do
     certdir=$(dirname ${certDB});
-    certutil -A -n "${certname}" -t "TCu,Cu,Tu" -i ${certfile} -d dbm:${certdir}
+    certutil -A -n "Chomper" -t "TCu,Cu,Tu" -i $1 -d dbm:${certdir}
 done
 
 
@@ -40,5 +32,5 @@ done
 for certDB in $(find ~/ -name "cert9.db")
 do
     certdir=$(dirname ${certDB});
-    certutil -A -n "${certname}" -t "TCu,Cu,Tu" -i ${certfile} -d sql:${certdir}
+    certutil -A -n "Chomper" -t "TCu,Cu,Tu" -i $1 -d sql:${certdir}
 done
