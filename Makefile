@@ -31,4 +31,4 @@ lock:
 	sudo chown -R $(CURRENT_USER):$(CURRENT_USER) ./.git
 
 reset:
-	sudo env PATH=$(PATH) ${INTERPRETER}3.6m ${CURRENT_DIR}/chomper/reset.py
+	sudo env PATH=$(PATH):/usr/sbin:/sbin ${INTERPRETER}3.6m ${CURRENT_DIR}/chomper/reset.py
