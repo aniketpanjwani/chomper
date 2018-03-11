@@ -11,14 +11,10 @@ SUDOERS_ENTRY_SUFFIX:="/chomper/block.py *"
 SUDOERS_ENTRY:=$(CURRENT_USER)$(SUDOERS_ENTRY_MIDDLE)$(INTERPRETER) $(CURRENT_DIR)$(SUDOERS_ENTRY_SUFFIX)
 
 init:
-  # Get build tools
-	sudo apt-get update
-	sudo apt-get install curl git build-essential zlib1g-dev libbz2-dev libsqlite3-dev libreadline-dev libncurses5-dev libssl-dev libgdbm-dev
-
   # Install pyenv and put it on PATH
 	curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-	echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
-	echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+	echo "export PATH='\$HOME/.pyenv/bin:\$PATH'" >> /home/$(CURRENT_USER)/.bashrc
+	echo "eval '\$(pyenv init -)'" >> /home/$(CURRENT_USER)/.bashrc
 	source ~/.bashrc
 
   # Install Python 3.6.4
