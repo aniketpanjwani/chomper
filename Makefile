@@ -11,13 +11,33 @@ SUDOERS_ENTRY_SUFFIX:="/chomper/block.py *"
 SUDOERS_ENTRY:=$(CURRENT_USER)$(SUDOERS_ENTRY_MIDDLE)$(INTERPRETER) $(CURRENT_DIR)$(SUDOERS_ENTRY_SUFFIX)
 
 init:
-	pip install pipenv # Install pipenv
-	pipenv install --dev # Install packages
+  # Get build tools
+	sudo apt-get update
+	sudo apt-get install curl git build-essential zlib1g-dev libbz2-dev libsqlite3-dev libreadline-dev libncurses5-dev libssl-dev libgdbm-dev
+
+  # Install pyenv and put it on PATH
+	curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+	echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
+	echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+	source ~/.bashrc
+
+  # Install Python 3.6.4
+	pyenv update
+	pyenv install 3.6.4
+	pyenv local 3.6.4
+
+  # Install pipenv and virtual environment
+	sudo -H pip install -U pipenv # Install pipenv
+	pipenv install --dev --python 3.6.4 # Install packages
+
+  # Install certificates
 	pipenv run mitmdump & sleep 2 && kill -9 $$! # Generate certificates
 	openssl x509 -outform der -in ~/.mitmproxy/mitmproxy-ca.pem -out ~/.mitmproxy/mitmproxy-ca.crt
 	sudo cp /home/$(CURRENT_USER)/.mitmproxy/mitmproxy-ca.crt /usr/local/share/ca-certificates/mitmproxy-ca.crt # Install root certificates
 	sudo update-ca-certificates
 	sudo sh ./chomper/certs.sh # Make browsers recognize root certificates
+
+  # Enable ip forwarding
 	sudo sysctl -w net.ipv4.ip_forward=1 # Enable ipv4 forwarding
 	sudo sysctl -w net.ipv6.conf.all.forwarding=1 # Enable ipv6 forwarding
 	sudo sysctl -p # Lock in new ip forwarding settings.
