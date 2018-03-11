@@ -30,7 +30,7 @@ init:
 
   # Install certificates
 	pipenv run mitmdump & sleep 2 && kill -9 $$! # Generate certificates
-	openssl x509 -outform der -in ~/.mitmproxy/mitmproxy-ca.pem -out ~/.mitmproxy/mitmproxy-ca.crt
+	openssl x509 -outform der -in /home/$(CURRENT_USER)/.mitmproxy/mitmproxy-ca.pem -out /home/$(CURRENT_USER)/.mitmproxy/mitmproxy-ca.crt
 	sudo cp /home/$(CURRENT_USER)/.mitmproxy/mitmproxy-ca.crt /usr/local/share/ca-certificates/mitmproxy-ca.crt # Install root certificates
 	sudo update-ca-certificates
 	sudo sh ./chomper/certs.sh # Make browsers recognize root certificates
