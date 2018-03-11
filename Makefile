@@ -13,7 +13,7 @@ SUDOERS_ENTRY:=$(CURRENT_USER)$(SUDOERS_ENTRY_MIDDLE)$(INTERPRETER) $(CURRENT_DI
 
 init:
   # Install pyenv and put it on PATH
-  curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+	curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 	echo "export PATH='$$HOME/.pyenv/bin:$$PATH'" >> /home/$(CURRENT_USER)/.bashrc
 	echo "eval '$$(pyenv init -)'" >> /home/$(CURRENT_USER)/.bashrc
 	source ~/.bashrc
