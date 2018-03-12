@@ -14,10 +14,6 @@ def exec_command(command):
     p.wait()
 
 
-def pause_sudo(username, sleep_time):
-    exec_command('sh pause_sudo.sh {} {}'.format(username, sleep_time))
-
-
 def reset_nat():
     exec_command('iptables -t nat -F')
     exec_command('ip6tables -t nat -F')
