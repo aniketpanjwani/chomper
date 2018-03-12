@@ -40,9 +40,6 @@ init:
 	sudo sysctl -w net.ipv6.conf.all.forwarding=1 # Enable ipv6 forwarding
 	sudo sysctl -p # Lock in new ip forwarding settings.
 
-  # Put chomper executable on PATH
-	echo "export PATH='$$HOME/.pyenv/bin:$$PATH'" >> /home/$(CURRENT_USER)/.bashrc
-
 lock:
 	echo $(SUDOERS_ENTRY) | sudo EDITOR='tee' visudo -f $(SUDOERS_FILE)
 	sudo chown -R root:root ./
