@@ -14,10 +14,12 @@ You can read more about my motivation for developing Chomper [[https://addictedt
 
 Before beginning installation, you should have git and [[https://www.gnu.org/software/screen/manual/screen.html][screen]] installed. When installing Chomper, you need to use the user's account who will be using Chomper, and the account needs administrator privileges. After installation, the user using Chomper no longer needs administrator privileges.
 
-1. Clone Chomper into some repository, e.g. ~/home/yourname/chomper~, and change directories to the repository.
-2. Execute ~make init~ into your terminal.
+1. Select a directory where you want to install Chomper, e.g. ~/home/your-username/chomper~.
+2. Clone Chomper that directory, i.e. ~git clone https://github.com/aniketpanjwani/chomper /home/your-username/chomper~.
+3. Change directories to the repository, i.e. ~cd /home/your-username/chomper~.
+4. Execute ~make init~ into your terminal.
    + *Do not* execute ~sudo make init~. Instead, simply enter your password when prompted.
-3. Put the chomper executable on your PATH. You can do this by putting ~export PATH="/home/yourname/chomper/bin:$PATH"~ at the bottom of your ~~/.bashrc~ file, and then executing ~source ~/.bashrc~.
+5. Put the chomper executable on your PATH. You can do this by putting ~export PATH="/home/your-username/chomper/bin:$PATH"~ at the bottom of your ~/home/your-username/.bashrc~ file, and then executing ~source /home/your-username/.bashrc~ in the terminal.
 
 You're now ready to use Chomper!
 * Usage
