@@ -10,7 +10,7 @@ Chomper instead filters outgoing requests through a transparent proxy, which all
 
 You can read more about my motivation for developing Chomper [[https://addictedto.tech/chomper/][here]].
 * Installation
-*NOTE*: Currently, Chomper is only tested for Debian-based distributions, i.e. Linux Mint, Ubuntu, and Debian. You should be able to install Chomper manually on other distributions, but I don't have explicit instructions. If you're installing Chomper on a non Debian-based distribution, look at the ~init~ rule of the Makefile. 
+*NOTE*: Currently, Chomper is only tested for Debian-based distributions, i.e. Linux Mint, Ubuntu, and Debian. You should be able to install Chomper manually on other distributions, but I don't have explicit instructions. If you're trying to install Chomper on a non Debian-based distribution, look at the ~init~ rule of the Makefile for guidance.
 
 Before beginning installation, you should have git and [[https://www.gnu.org/software/screen/manual/screen.html][screen]] installed. When installing Chomper, you need to use the user's account who will be using Chomper, and the account needs administrator privileges. After installation, the user using Chomper no longer needs administrator privileges.
 
