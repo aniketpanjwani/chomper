@@ -18,6 +18,9 @@ python-crontab = "*"
 
 pytest = "*"
 pylint = "*"
+sphinx = "*"
+sphinx-autobuild = "*"
+sphinx-rtd-theme = "*"
 
 
 [requires]
