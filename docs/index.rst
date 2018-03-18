@@ -15,7 +15,8 @@ Currently, Chomper is only available for GNU Linux, but an OSX port is being dev
    :maxdepth: 2
 
    installation/index.rst
-   usage/index.rst
+   basic_usage/index.rst
+   advanced_usage/index.rst
    development/index.rst
    about/index.rst
    
