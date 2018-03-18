@@ -13,4 +13,10 @@ An automated installation script has been created for Debian-based distributions
 
   curl -sL https://git.io/vxORB | bash
 
-Enter your password where prompted. The script will install all UNIX dependencies, install pyenv (a Python version manager), install Python 3.6.4 in ~/.pyenv/ subdirectory, clone Chomper into ~/chomper, and append a Chomper executable to your PATH.
+Enter your password where prompted. The script will install all UNIX dependencies, install pyenv (a Python version manager) and put it on PATH, install Python 3.6.4 in ~/.pyenv/ subdirectory, clone Chomper into ~/chomper, and append a Chomper executable to your PATH.
+
+################
+Non Debian-based
+################
+
+Coming soon!
