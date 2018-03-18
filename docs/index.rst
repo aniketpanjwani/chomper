@@ -3,17 +3,26 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Chomper's documentation!
-===================================
+Chomper
+=======
+
+Chomper is a Python command-line program which can create blacklists of blocked websites or whitelists of allowed websites for specified periods of time. The program is intended to help people with issues being productive on a computer due to Internet distractions.
+
+Currently, Chomper is only available for GNU Linux, but an OSX port is being developed.
 
 .. toctree::
+   :caption: Table of Contents
    :maxdepth: 2
-   :caption: Contents:
 
-Testing, testing, one two three.
+   usage/index.rst
+   about/index.rst
+   development/index.rst
+   
 
-Indices and tables
-==================
+Module Documentation
+====================
+
+.. toctree::
 
 * :ref:`genindex`
 * :ref:`modindex`
