@@ -25,4 +25,7 @@ Chomper is a wrapper around a Python proxy library called `mitmproxy <https://mi
 #################################
 This function enacts new blocks. It does the following:
 
-1. 
+1. Remove any existing rules on iptables' NAT chain.
+2. Kill any currently running *mitmdump* or *mitmproxy* processes.
+3. Forward all outgoing HTTP/HTTPS traffic from ports 80/443 to port 8080.
+4. Start a *mitmdump* process listening on port 8080 as a daemon inside a detached *screen* process.
