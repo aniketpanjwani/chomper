@@ -18,6 +18,6 @@ Please post bug reports and feature requests (only) in GitHub issues.
 * License
 Chomper is licensed according to the GPLv3. See the COPYING file for more details.
 * Contributing
-Interested in contributing? Awesome! Please read the [[./CONTRIBUTING.org][CONTRIBUTING.org file]].
+Interested in contributing? Awesome! Start by reading the [[https://chomper.readthedocs.io/en/latest/development/index.html][developer's walkthrough]] to the Chomper codebase. For guidelines on making pull requests, please read the [[./CONTRIBUTING.org][CONTRIBUTING.org file]].
 * About
 Chomper was created and is maintained by Aniket Panjwani. For a full list of contributors, go [[https://github.com/aniketpanjwani/chomper/graphs/contributors][here]].
